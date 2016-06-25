@@ -1,0 +1,185 @@
+<html>
+<head>
+  <style>
+  /* http://meyerweb.com/eric/tools/css/reset/
+   v2.0b1 | 201101
+   NOTE: WORK IN PROGRESS
+   USE WITH CAUTION AND TEST WITH ABANDON */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define visible focus styles!
+:focus {
+	outline: ?????;
+} */
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+  * {
+    box-sizing: border-box;;
+  }
+  .ng-cloak {
+    display: none;
+  }
+  .user-selected {
+    background: #0f0;
+  }
+
+
+  .amount-container {
+    border: 1px solid #000;
+    height: 500px;
+    width: 400px;
+
+    overflow-x: hidden;
+    position: relative;
+
+
+  }
+
+  .child-amount-container {
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+
+    transition: left 200ms linear;
+  }
+
+  .child-amount-container li {
+    border: 1px solid #0f0  ;
+    padding: 20px;
+  }
+
+  .broad-amount-container {
+    left: 0;
+  }
+
+  .sub-amount-container {
+    left: 100%;
+  }
+
+  .amount-container.sub-amount-active .broad-amount-container {
+    left: -100%;
+  }
+
+  .amount-container.sub-amount-active .sub-amount-container {
+    left: 0;
+  }
+
+  .sub-amount-back {
+    background: #f00;
+    float: left;
+    height: 100%;
+    width: 25px;
+  }
+
+  .even-row {
+    background: #f00000;
+  }
+  .odd-row {
+    background: #0f0000;
+  }
+
+
+  </style>
+</head>
+<body>
+  <div ng-app="donationApp" class="ng-cloak">
+    <div ng-controller="DonationController as donCtrl">
+
+      <div>Your Selections:
+        <ul>
+          <li ng-repeat="amount in userSelections">${{ amount }} <span ng-click="removeSelectedAmount(amount)">X</span></li>
+        </ul>
+      </div>
+
+      <div>
+        Total: {{ getTotalSelectedAmount() }}
+      </div>
+
+      <div class="amount-container" ng-class="{'sub-amount-active': selectedBroadAmount !== null}">
+        <div class="broad-amount-container child-amount-container">
+          <ul>
+            <li
+              ng-repeat="bAmt in broadAmounts track by $index"
+              ng-click="setSelectedBroadAmount(bAmt)"
+              ng-class-even="'even-row'"
+              ng-class-odd="'odd-row'"
+            >Amounts from {{ broadAmounts[$index - 1] + 1 }} - {{ bAmt }}</li>
+          </ul>
+        </div>
+
+        <div class="sub-amount-container child-amount-container">
+          <div class="sub-amount-back" ng-click="clearSelectedBroadAmount()"><</div>
+          <ul>
+            <li
+              ng-repeat="sAmt in subAmounts[selectedBroadAmount] track by $index"
+              ng-class="{'user-selected': isSelectedAmount(sAmt)}"
+              ng-click="toggleAmount(sAmt)"
+              ng-class-even="'even-row'"
+              ng-class-odd="'odd-row'"
+            >${{ sAmt }}</li>
+          </ul>
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <script src="src/js/donation/app.js"></script>
+</body>
+</html>
