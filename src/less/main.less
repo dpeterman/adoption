@@ -37,7 +37,7 @@ body {
   z-index: 1;
 
   &.active {
-    border-bottom: 1px solid fade(#fff, .6);
+    border-bottom: 1px solid fade(#fff, 60%);
     background: @primary-color-dark;
   }
 }
@@ -142,4 +142,28 @@ main > section {
     margin-top: 0;
     padding-top: 0;
   }
+}
+
+.bible-verse {
+  background: fade(#fff, 20%);
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 25px 50px;
+  width: 70%;
+}
+
+.bible-verse p {
+  margin: 0;
+  padding: 0;
+}
+
+.bible-verse--content {
+  font-size: .9em;
+  font-style: italic;
+}
+
+.bible-verse--citation {
+  font-size: .8em;
+  font-weight: 600;
+  text-align: right;
 }

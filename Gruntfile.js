@@ -36,7 +36,9 @@ module.exports = function(grunt) {
     },
     less: {
       dist: {
-        '<%= dirs.dist %>css/styles.css': '<%= dirs.src %>less/main.less'
+        files: {
+          '<%= dirs.dist %>css/styles.css': '<%= dirs.src %>less/main.less'
+        }
       }
     },
     jshint: {
