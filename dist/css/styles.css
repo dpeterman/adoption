@@ -22,6 +22,19 @@ body {
   color: #fff;
   font-size: 1em;
   padding: 20px 80px;
+  transition: all 200ms linear;
+}
+.button:hover {
+  background: #1C7D8A;
+}
+a.button {
+  text-decoration: none;
+}
+button.button,
+input.button {
+  border-left: none;
+  border-right: none;
+  border-top: none;
 }
 .navbar {
   padding: 15px;
@@ -123,12 +136,20 @@ main > section {
   margin-top: 0;
   padding-top: 0;
 }
+.flex-container {
+  display: flex;
+}
+.flex-item {
+  flex: 1;
+}
+.bible-verses-container {
+  margin-top: 75px;
+}
 .bible-verse {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  margin: 0 auto;
+  margin: 0 20px;
   padding: 25px 50px;
-  width: 70%;
 }
 .bible-verse p {
   margin: 0;
