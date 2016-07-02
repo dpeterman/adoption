@@ -172,6 +172,8 @@ main > section {
 .bible-verse {
   background: fade(#000, 10%);
   border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
   margin: 0 20px;
   padding: 25px 50px;
 }
@@ -182,14 +184,18 @@ main > section {
 }
 
 .bible-verse--content {
+  align-self: flex-start;
   font-size: .9em;
   font-style: italic;
+  width: 100%;
 }
 
 .bible-verse--citation {
+  align-self: flex-end;
   font-size: .8em;
   font-weight: 600;
   text-align: right;
+  width: 100%;
 }
 
 .social-icon {

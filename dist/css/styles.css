@@ -148,6 +148,8 @@ main > section {
 .bible-verse {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
   margin: 0 20px;
   padding: 25px 50px;
 }
@@ -156,13 +158,17 @@ main > section {
   padding: 0;
 }
 .bible-verse--content {
+  align-self: flex-start;
   font-size: .9em;
   font-style: italic;
+  width: 100%;
 }
 .bible-verse--citation {
+  align-self: flex-end;
   font-size: .8em;
   font-weight: 600;
   text-align: right;
+  width: 100%;
 }
 .social-icon {
   margin-right: 15px;
