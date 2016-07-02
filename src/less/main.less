@@ -45,14 +45,36 @@ button.button, input.button {
   padding: 15px;
   position: fixed;
   top: 0;
-  transition: background 500ms linear;
   width: 100%;
   z-index: 1;
 
-  &.active {
-    border-bottom: 1px solid fade(#fff, 60%);
-    background: @primary-color-dark;
+}
+
+.navbar--background {
+  background: @primary-color-dark;
+  border-bottom: 1px solid fade(#fff, 60%);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: calc(0 - 100%);
+  width: 100%;
+  z-index: -1;
+
+  .active & {
+    top: 0;
   }
+
+  .scroll-transition & {
+    transition: all 100ms ease-out;
+  }
+}
+
+.navbar--background--logo {
+  left: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 160px;
 }
 
 nav {

@@ -22,6 +22,9 @@
 
 <body>
   <section id="navbar" class="navbar">
+    <div class="navbar--background">
+      <img src="images/adoption-logo-white-960.png" alt="" class="navbar--background--logo"/>
+    </div>
     <nav class="nav">
       <div class="nav--nav-item"><a href="#our-family">Our Family</a></div>
       <div class="nav--nav-item"><a href="#why-adoption">Why Adoption?</a></div>
@@ -119,23 +122,27 @@
   <script>
     var navbar = document.getElementById('navbar');
 
-    var getIsTop = function() {
-      return window.pageYOffset === 0;
+    var transitionPoint = 100;
+    var isPastTransitionPoint = function() {
+      return window.pageYOffset > transitionPoint;
     };
 
-    var isTop = getIsTop();
+    var isActive = false;
 
-    document.addEventListener('scroll', function() {
-      console.log('isTop', isTop);
-      console.log('getIsTop', getIsTop());
-      if(isTop && !getIsTop()) {
-          isTop = false;
-          navbar.classList.add('active');
-      } else if(!isTop && getIsTop()) {
-          isTop = true;
+    var onScroll = function() {
+      if(isActive && !isPastTransitionPoint()) {
+          isActive = false;
           navbar.classList.remove('active');
+      } else if(!isActive && isPastTransitionPoint()) {
+          isActive = true;
+          navbar.classList.add('active');
       }
-    });
+    };
+
+    document.addEventListener('scroll', onScroll);
+    onScroll();
+
+    setTimeout(function() {navbar.classList.add('scroll-transition');}, 100);
   </script>
 </body>
 </html>
