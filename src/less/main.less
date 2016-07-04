@@ -6,6 +6,7 @@
 
 @primary-background-gradient: linear-gradient(160deg, fade(@primary-color, 90%), fade(@tertiary-color, 90%));
 
+@phone-bp: 480px;
 
 * { box-sizing: border-box; }
 html, body {margin:0;padding:0;height:100%;width:100%}
@@ -48,6 +49,12 @@ button.button, input.button {
   width: 100%;
   z-index: 1;
 
+}
+
+.navbar--mobile-menu-toggle {
+  color: #fff;
+  display: none;
+  float: right;
 }
 
 .navbar--background {
@@ -116,6 +123,11 @@ header {
   text-align: center;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.header--content--logo {
+  max-width: 960px;
+  width: 100%;
 }
 
 .header--content--divider {
@@ -222,4 +234,41 @@ main > section {
 
 .social-icon {
   margin-right: 15px;
+}
+
+@media screen and (max-width: @phone-bp) {
+  .navbar {
+    padding: 15px;
+  }
+
+  .navbar--background {
+    padding: 15px;
+    top: 0;
+  }
+
+  .navbar--mobile-menu-toggle {
+    display: inline;
+  }
+
+  .navbar--background--logo {
+    left: 0;
+    position: relative;
+    top: 0;
+    transform: none;
+    width: 140px;
+  }
+
+  nav {
+    clear: both;
+    display: none;
+    float: none;
+  }
+
+  .nav--nav-item {
+    display: block;
+
+    a {
+      margin: 0 15px;
+    }
+  }
 }

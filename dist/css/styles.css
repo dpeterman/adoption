@@ -43,6 +43,11 @@ input.button {
   width: 100%;
   z-index: 1;
 }
+.navbar--mobile-menu-toggle {
+  color: #fff;
+  display: none;
+  float: right;
+}
 .navbar--background {
   background: #8A1551;
   border-bottom: 1px solid rgba(255, 255, 255, 0.6);
@@ -100,6 +105,10 @@ header {
   text-align: center;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+.header--content--logo {
+  max-width: 960px;
+  width: 100%;
 }
 .header--content--divider {
   border-color: #fff;
@@ -190,4 +199,34 @@ main > section {
 }
 .social-icon {
   margin-right: 15px;
+}
+@media screen and (max-width: 480px) {
+  .navbar {
+    padding: 15px;
+  }
+  .navbar--background {
+    padding: 15px;
+    top: 0;
+  }
+  .navbar--mobile-menu-toggle {
+    display: inline;
+  }
+  .navbar--background--logo {
+    left: 0;
+    position: relative;
+    top: 0;
+    transform: none;
+    width: 140px;
+  }
+  nav {
+    clear: both;
+    display: none;
+    float: none;
+  }
+  .nav--nav-item {
+    display: block;
+  }
+  .nav--nav-item a {
+    margin: 0 15px;
+  }
 }
