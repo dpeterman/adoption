@@ -200,13 +200,12 @@ main > section {
 .social-icon {
   margin-right: 15px;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 1200px) {
   .navbar {
     padding: 15px;
   }
   .navbar--background {
     padding: 15px;
-    top: 0;
   }
   .navbar--mobile-menu-toggle {
     display: inline;
@@ -228,5 +227,11 @@ main > section {
   }
   .nav--nav-item a {
     margin: 0 15px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .navbar--background {
+    top: 0;
+    /* always show.. no transition */
   }
 }

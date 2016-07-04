@@ -21,7 +21,7 @@
 
 <body>
   <section id="navbar" class="navbar">
-    <span class="navbar--mobile-menu-toggle"><i class="fa fa-navicon"></i></span>
+    <span id="mobile-menu-toggle" class="navbar--mobile-menu-toggle"><i class="fa fa-navicon"></i></span>
     <div class="navbar--background">
       <img src="images/adoption-logo-white-960.png" alt="" class="navbar--background--logo"/>
     </div>
@@ -120,6 +120,40 @@
   </section>
 
   <script>
+    var Peterman = {};
+    Peterman.Toggler = (function() {
+      var Toggler = function(on, off, startPos) {
+        var onFunc = on;
+        var offFunc = off;
+        var position = !!startPos;
+        var self = this;
+
+        this.on = function() {
+          position = true;
+          onFunc();
+        };
+
+        this.off = function() {
+          position = false;
+          offFunc();
+        };
+
+        this.toggle = function() {
+          if(position) {
+            self.off();
+          } else {
+            self.on();
+          }
+        };
+
+        this.isOn = function() {
+          return position === true;
+        };
+      };
+
+      return Toggler;
+    })();
+
     var navbar = document.getElementById('navbar');
 
     var transitionPoint = 100;
@@ -127,15 +161,17 @@
       return window.pageYOffset > transitionPoint;
     };
 
-    var isActive = false;
+    var navbarToggle = new Peterman.Toggler(function() {
+        navbar.classList.add('active');
+    }, function() {
+        navbar.classList.remove('active');
+    });
 
-    var onScroll = function() {
-      if(isActive && !isPastTransitionPoint()) {
-          isActive = false;
-          navbar.classList.remove('active');
-      } else if(!isActive && isPastTransitionPoint()) {
-          isActive = true;
-          navbar.classList.add('active');
+    var onScroll = function()   {
+      if(navbarToggle.isOn() && !isPastTransitionPoint()) {
+        navbarToggle.off();
+      } else if(!navbarToggle.isOn() && isPastTransitionPoint()) {
+        navbarToggle.on();
       }
     };
 
@@ -143,6 +179,14 @@
     onScroll();
 
     setTimeout(function() {navbar.classList.add('scroll-transition');}, 100);
+
+    var mobileMenuToggleElement = document.getElementById('mobile-menu-toggle');
+    var mobileMenuToggle = new Peterman.Toggler(function() {
+      console.log('mobile menu active');
+    }, function() {
+      console.log('mobile menu inactive');
+    });
+    mobileMenuToggleElement.addEventListener('click', mobileMenuToggle.toggle);
   </script>
 </body>
 </html>

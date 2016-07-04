@@ -6,6 +6,8 @@
 
 @primary-background-gradient: linear-gradient(160deg, fade(@primary-color, 90%), fade(@tertiary-color, 90%));
 
+@desktop-bp: 1200px;
+@tablet-bp: 720px;
 @phone-bp: 480px;
 
 * { box-sizing: border-box; }
@@ -236,14 +238,13 @@ main > section {
   margin-right: 15px;
 }
 
-@media screen and (max-width: @phone-bp) {
+@media screen and (max-width: @desktop-bp) {
   .navbar {
     padding: 15px;
   }
 
   .navbar--background {
     padding: 15px;
-    top: 0;
   }
 
   .navbar--mobile-menu-toggle {
@@ -270,5 +271,12 @@ main > section {
     a {
       margin: 0 15px;
     }
+  }
+
+}
+
+@media screen and (max-width: @phone-bp) {
+  .navbar--background {
+    top: 0; /* always show.. no transition */
   }
 }
