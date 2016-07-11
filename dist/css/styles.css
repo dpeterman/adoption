@@ -21,7 +21,7 @@ body {
   border-radius: 5px;
   color: #fff;
   font-size: 1em;
-  padding: 20px 80px;
+  padding: .75rem 3rem;
   transition: all 200ms linear;
 }
 .button:hover {
@@ -53,6 +53,7 @@ input.button {
   border-bottom: 1px solid rgba(255, 255, 255, 0.6);
   height: 100%;
   left: 0;
+  padding: 15px;
   position: absolute;
   top: calc(-100%);
   width: 100%;
@@ -65,11 +66,11 @@ input.button {
   transition: all 100ms ease-out;
 }
 .navbar--background--logo {
-  left: 20px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 160px;
+  left: 0;
+  position: relative;
+  height: 100%;
+  top: 0;
+  width: auto;
 }
 nav {
   color: #fff;
@@ -169,15 +170,12 @@ main > section {
 .flex-item {
   flex: 1;
 }
-.bible-verses-container {
-  margin-top: 75px;
-}
 .bible-verse {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
-  margin: 0 20px;
+  margin: 50px 20px 0 20px;
   padding: 25px 50px;
 }
 .bible-verse p {
@@ -197,25 +195,31 @@ main > section {
   text-align: right;
   width: 100%;
 }
+.social-icon-container {
+  overflow: auto;
+}
+.social-icon-container .button {
+  float: left;
+  margin: 25px 25px 0 0 ;
+}
 .social-icon {
   margin-right: 15px;
 }
 @media screen and (max-width: 1200px) {
-  .navbar {
-    padding: 15px;
+  html {
+    font-size: 20px;
   }
+  .flex-container {
+    display: block;
+  }
+}
+@media screen and (max-width: 720px) {
   .navbar--background {
-    padding: 15px;
+    top: 0;
+    /* always show.. no transition */
   }
   .navbar--mobile-menu-toggle {
     display: inline;
-  }
-  .navbar--background--logo {
-    left: 0;
-    position: relative;
-    top: 0;
-    transform: none;
-    width: 140px;
   }
   nav {
     clear: both;
@@ -227,11 +231,5 @@ main > section {
   }
   .nav--nav-item a {
     margin: 0 15px;
-  }
-}
-@media screen and (max-width: 480px) {
-  .navbar--background {
-    top: 0;
-    /* always show.. no transition */
   }
 }
