@@ -65,6 +65,10 @@ module.exports = function(grunt) {
       }
     },
     watch: {
+      src: {
+        files: '<%= dirs.src %>/**/*',
+        tasks: ['default']
+      },
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
@@ -86,4 +90,5 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['less']);
 
+  grunt.registerTask('dev', ['default', 'watch:src']);
 };

@@ -153,6 +153,11 @@ h3 {
 main > section {
   padding: 100px 50px;
 }
+.inline-image {
+  display: inline;
+  float: right;
+  margin-left: 25px;
+}
 .help-item {
   margin-top: 80px;
 }
@@ -217,8 +222,11 @@ main > section {
   }
 }
 @media screen and (max-width: 720px) {
-  main > section {
-    padding: 50px 10px;
+  .inline-image {
+    display: block;
+    float: none;
+    margin: auto;
+    text-align: center;
   }
   .navbar--background {
     top: 0;
