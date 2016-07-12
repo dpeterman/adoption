@@ -240,6 +240,9 @@ main > section {
     display: none;
     float: none;
   }
+  nav.active {
+    display: block;
+  }
   .nav--nav-item {
     display: block;
   }

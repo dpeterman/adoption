@@ -25,7 +25,7 @@
     <div class="navbar--background">
       <img src="images/adoption-logo-white-960.png" alt="" class="navbar--background--logo"/>
     </div>
-    <nav class="nav">
+    <nav id="nav" class="nav">
       <div class="nav--nav-item"><a href="#our-family">Our Family</a></div>
       <div class="nav--nav-item"><a href="#why-adoption">Why Adoption?</a></div>
       <div class="nav--nav-item"><a href="#why-taiwan">Why Taiwan?</a></div>
@@ -187,12 +187,17 @@
 
     setTimeout(function() {navbar.classList.add('scroll-transition');}, 100);
 
-    var mobileMenuToggleElement = document.getElementById('mobile-menu-toggle');
+    var navElement = document.getElementById('nav');
+
     var mobileMenuToggle = new Peterman.Toggler(function() {
+      navElement.classList.add('active');
       console.log('mobile menu active');
     }, function() {
+      navElement.classList.remove('active');
       console.log('mobile menu inactive');
     });
+
+    var mobileMenuToggleElement = document.getElementById('mobile-menu-toggle');
     mobileMenuToggleElement.addEventListener('click', mobileMenuToggle.toggle);
   </script>
 </body>
