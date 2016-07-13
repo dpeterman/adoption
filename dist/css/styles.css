@@ -65,11 +65,11 @@ input.button {
 .scroll-transition .navbar--background {
   transition: all 100ms ease-out;
 }
+.navbar--background--logo-container {
+  height: 2em;
+}
 .navbar--background--logo {
-  left: 0;
-  position: relative;
   height: 100%;
-  top: 0;
   width: auto;
 }
 nav {
@@ -149,6 +149,9 @@ h3 {
 }
 .light-text {
   color: #fff;
+}
+.hidden {
+  visibility: hidden;
 }
 main > section {
   padding: 100px 50px;
@@ -243,6 +246,7 @@ main > section {
     clear: both;
     display: none;
     float: none;
+    padding-top: 20px;
   }
   nav.active {
     display: block;
