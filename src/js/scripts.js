@@ -25,6 +25,10 @@ Peterman.Toggler = (function() {
       }
     };
 
+    this.setPosition = function(_position) {
+      position = !!_position;
+    };
+
     this.isOn = function() {
       return position === true;
     };
@@ -41,21 +45,26 @@ Peterman.NavigationMenu = (function() {
     var navigationElement = _navigationElement;
 
     var toggle = new Peterman.Toggler(function() {
-      self.activateMenu();
+      activateMenu();
     }, function() {
-      self.deactivateMenu();
+      deactivateMenu();
     });
 
     toggleElement.addEventListener('click', toggle.toggle);
 
-    this.activateMenu = function() {
+    var activateMenu = function() {
       navigationElement.classList.add('active');
       console.log('mobile menu active');
     };
 
-    this.deactivateMenu = function() {
+    var deactivateMenu = function() {
       navigationElement.classList.remove('active');
       console.log('mobile menu inactive');
+    };
+
+    this.deactivateMenu = function() {
+      deactivateMenu();
+      toggle.setPosition(false);
     };
   };
 
