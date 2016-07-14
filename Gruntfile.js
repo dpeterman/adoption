@@ -27,11 +27,14 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        banner: '<%= banner %>'
+        sourceMap: true,
+        sourceMapName: '<%= dirs.dist %>js/scripts.map'
       },
       dist: {
-        src: '<%= concat.dist.dest %>',
-        dest: 'dist/<%= pkg.name %>.min.js'
+        // src: '<%= concat.dist.dest %>',
+        files: {
+          '<%= dirs.dist %>js/scripts.min.js' : ['<%= dirs.src %>js/scripts.js']
+        }
       }
     },
     less: {
@@ -88,7 +91,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task.
-  grunt.registerTask('default', ['less']);
+  grunt.registerTask('default', ['uglify', 'less']);
 
   grunt.registerTask('dev', ['default', 'watch:src']);
 };
